@@ -5,13 +5,15 @@ public class fighter
 		private int hp;
 		private int attack;
 		private int defence;
+		private int magic;
 		
-		public fighter(String f, int h, int a, int de)
+		public fighter(String f, int h, int a, int de, int m)
 					{
 						fighter = f;
 						hp = h;
 						attack = a;
 						defence = de;
+						magic = m;
 					}
 
 		public String getFighterName()
@@ -52,6 +54,16 @@ public class fighter
 		public void setDefence(int defence)
 			{
 				this.defence = defence;
+			}
+
+		public int getMagic()
+			{
+					return magic;
+			}
+
+		public void setMagic(int magic)
+			{
+					this.magic = magic;
 			}
 
 	}

@@ -41,11 +41,25 @@ public class fightinggameprocess
 			}
 		static void playerchoosing()
 			{
+				
 				int computerHp=fighterInformation.fightInformation.get(computerFighterChoice).getHp();
 				int playerHp=fighterInformation.fightInformation.get(userChooseFighter).getHp();
 				boolean result = true;
 				while(result)
 					{
+						if(computerHp<1)
+							{
+								System.out.println("You win the game!!!");
+								result=false;
+								System.exit(0);
+							}
+						else if(playerHp<1)
+						{
+							System.out.println("You just lost the game!!!");
+							result=false;
+							System.exit(0);
+							
+						}
 						int reflectPoints= (int)(Math.random()*3)+1;
 						int fightingselfdamage=(int)(Math.random()*2)+1;
 						int computerActions= (int)(Math.random()*2)+1;
@@ -120,16 +134,16 @@ public class fightinggameprocess
 									}
 								
 							}
-						else
+						else if (userChooseAction==2)
 							{
-								if(computerActions==1)
+								if(computerActions==2)
 									{
 										System.out.println("You chose to defend and stopped "+fighterInformation.fightInformation.get(userChooseFighter).getDefence()+" points of damage.");
 										System.out.println("Computer chose to fight and dealt "+computerDamage+" points of damage.");
 										if(fighterInformation.fightInformation.get(userChooseFighter).getDefence()>computerDamage)
 											{
-												computerHp=computerHp-reflectPoints;
-												System.out.println("Since your defence damage is higher or even with the computer's attack, you return "+reflectPoints+" points od damage to the computer.");
+											computerHp=computerHp-reflectPoints;
+											System.out.println("Since your defence damage is higher or even with the computer's attack, you return "+reflectPoints+" points od damage to the computer.");
 												System.out.println("Computer HP is "+computerHp+".");
 												
 												
@@ -147,22 +161,31 @@ public class fightinggameprocess
 										System.out.println("Both of you chose to defend so no damage to any one.");
 									}
 							}
-						if(computerHp<1)
+						else
 							{
-								System.out.println("You win the game!!!");
-								result=false;
-								break;
+							System.out.println("You chose to us magic " + fighterInformation.fightInformation.get(userChooseFighter).getMagic()+ " points of damage.");
+							System.out.println("Computer chose to fight and dealt "+computerDamage+" points of damage.");
+							if(fighterInformation.fightInformation.get(userChooseFighter).getMagic()>computerDamage)
+								{
+									computerHp=computerHp-reflectPoints;
+									System.out.println("Since your defence damage is higher or even with the computer's attack, you return "+reflectPoints+" points od damage to the computer.");
+									System.out.println("Computer HP is "+computerHp+".");	
+								}
+							else
+								{
+									playerHp=playerHp+fighterInformation.fightInformation.get(userChooseFighter).getMagic()-computerDamage;
+									System.out.println("Your HP drops "+(fighterInformation.fightInformation.get(userChooseFighter).getMagic()-computerDamage) + " points.");
+									System.out.println("Your HP is "+playerHp+".");
+								}	
+								
+								
+								}
 							}
-						else if(playerHp<1)
-						{
-							System.out.println("You just lost the game!!!");
-							result=false;
-							break;
-						}
+						
 					}
+	}
 				
-				
-			}
+			
 		
 
-	}
+

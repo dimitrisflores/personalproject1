@@ -1,14 +1,14 @@
 
-public class fighterdatabase
+public class fighter
 	{
-		private String fighterName;
+		private String fighter;
 		private int hp;
 		private int attack;
 		private int defence;
 		
-		public fighterdatabase(String f, int h, int a, int de)
+		public fighter(String f, int h, int a, int de)
 					{
-						fighterName = f;
+						fighter = f;
 						hp = h;
 						attack = a;
 						defence = de;
@@ -16,12 +16,12 @@ public class fighterdatabase
 
 		public String getFighterName()
 			{
-				return fighterName;
+				return fighter;
 			}
 
-		public void setFighterName(String fighterName)
+		public void setFighter(String fighter)
 			{
-				this.fighterName = fighterName;
+				this.fighter = fighter;
 			}
 
 		public int getHp()

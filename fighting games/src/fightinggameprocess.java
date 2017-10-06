@@ -12,7 +12,7 @@ public class fightinggameprocess
 		
 		public static void main(String[] args)
 			{
-				fighterinformation.fillFighterInformation();
+				fighterInformation.fillFighterInformation();
 				fighterintroduce();
 				playerchoosing();
 				
@@ -24,21 +24,25 @@ public class fightinggameprocess
 			{
 				System.out.println("Welcome to the fighting game, choose your fighter!!!");
 				System.out.println("Which fighter do you want to choose?");
-				System.out.println("0 "+fighterinformation.fightInformation.get(0).getFighterName()+"  1 "+fighterinformation.fightInformation.get(1).getFighterName()+"  2 "+fighterinformation.fightInformation.get(2).getFighterName());
+				System.out.println("1) "+fighterInformation.fightInformation.get(0).getFighterName());
+				System.out.println("2) "+fighterInformation.fightInformation.get(1).getFighterName());
+				System.out.println("3) "+fighterInformation.fightInformation.get(2).getFighterName());
+				System.out.println("4) " + fighterInformation.fightInformation.get(3).getFighterName());
+				System.out.println("5) " + fighterInformation.fightInformation.get(4).getFighterName());
 				Scanner userinput = new Scanner(System.in);
-				int userchoosefighter = userinput.nextInt();
-				userChooseFighter=userchoosefighter;
+				int userPick = userinput.nextInt();
+				userChooseFighter=userPick - 1;
 				
 				
-				System.out.println("Your fighter is "+fighterinformation.fightInformation.get(userChooseFighter).getFighterName());
-				System.out.println("Your opponent is "+fighterinformation.fightInformation.get(computerFighterChoice).getFighterName());
+				System.out.println("You have selected "+fighterInformation.fightInformation.get(userChooseFighter).getFighterName() + ".");
+				System.out.println("Your opponent is "+fighterInformation.fightInformation.get(computerFighterChoice).getFighterName() + ".");
 				System.out.println("Let's Fight!!!");
 				
 			}
 		static void playerchoosing()
 			{
-				int computerHp=fighterinformation.fightInformation.get(computerFighterChoice).getHp();
-				int playerHp=fighterinformation.fightInformation.get(userChooseFighter).getHp();
+				int computerHp=fighterInformation.fightInformation.get(computerFighterChoice).getHp();
+				int playerHp=fighterInformation.fightInformation.get(userChooseFighter).getHp();
 				boolean result = true;
 				while(result)
 					{
@@ -49,20 +53,20 @@ public class fightinggameprocess
 						{
 							case 1:
 									{
-										computerDamage=fighterinformation.fightInformation.get(computerFighterChoice).getAttack();
+										computerDamage=fighterInformation.fightInformation.get(computerFighterChoice).getAttack();
 										break;
 									}
 							case 2:
 								
 									{
-										computerDamage=fighterinformation.fightInformation.get(computerFighterChoice).getDefence();
+										computerDamage=fighterInformation.fightInformation.get(computerFighterChoice).getDefence();
 										break;
 									}
 						}
 						
 						Scanner userinput1 = new Scanner(System.in);
-						System.out.println("Do you want to fight or defend?");
-						System.out.println("(1) fight  (2) defend");
+						System.out.println("Do you want to fight, defend, or use magic?");
+						System.out.println("(1) fight  (2) defend (3) magic");
 						int userChooseAction = userinput1.nextInt();
 						
 						
@@ -71,12 +75,12 @@ public class fightinggameprocess
 								if(computerActions==1)
 									{
 										System.out.println("Computer chose to fight and deals "+computerDamage+" points");
-										System.out.println("You chose to fight and deal "+fighterinformation.fightInformation.get(userChooseFighter).getAttack()+" points");
+										System.out.println("You chose to fight and deal "+fighterInformation.fightInformation.get(userChooseFighter).getAttack()+" points");
 										
-										if(fighterinformation.fightInformation.get(userChooseFighter).getAttack()>computerDamage)
+										if(fighterInformation.fightInformation.get(userChooseFighter).getAttack()>computerDamage)
 											{
-												System.out.println("Computer HP loses "+(fighterinformation.fightInformation.get(userChooseFighter).getAttack()-computerDamage) + " points.");
-												computerHp=computerHp-fighterinformation.fightInformation.get(userChooseFighter).getAttack()+computerDamage;
+												System.out.println("Computer HP loses "+(fighterInformation.fightInformation.get(userChooseFighter).getAttack()-computerDamage) + " points.");
+												computerHp=computerHp-fighterInformation.fightInformation.get(userChooseFighter).getAttack()+computerDamage;
 												System.out.println("Computer HP has "+computerHp+" points left.");
 												playerHp=playerHp-fightingselfdamage;
 												System.out.println("Since Computer's attack damage is lower or equal to your attack damage, the computer randomly does "+fightingselfdamage+" damage to you too.");
@@ -85,8 +89,8 @@ public class fightinggameprocess
 											}
 										else
 											{
-												System.out.println("Your HP drops "+(computerDamage-fighterinformation.fightInformation.get(userChooseFighter).getAttack()) + " points");
-												playerHp=playerHp+fighterinformation.fightInformation.get(userChooseFighter).getAttack()-computerDamage;
+												System.out.println("Your HP drops "+(computerDamage-fighterInformation.fightInformation.get(userChooseFighter).getAttack()) + " points");
+												playerHp=playerHp+fighterInformation.fightInformation.get(userChooseFighter).getAttack()-computerDamage;
 												System.out.println("Your HP is "+playerHp+".");
 												System.out.println("Since your attack damage is lower or equal to the computer attack damage, you do "+fightingselfdamage+" damage to the computer.");
 												computerHp=computerHp-fightingselfdamage;
@@ -97,12 +101,12 @@ public class fightinggameprocess
 									}
 								else
 									{
-										System.out.println("You chose to fight and deal "+fighterinformation.fightInformation.get(userChooseFighter).getAttack()+" damage.");
+										System.out.println("You chose to fight and deal "+fighterInformation.fightInformation.get(userChooseFighter).getAttack()+" damage.");
 										System.out.println("Computer chose to defend and blocked "+computerDamage+" damage.");
-										if(fighterinformation.fightInformation.get(userChooseFighter).getAttack()>computerDamage)
+										if(fighterInformation.fightInformation.get(userChooseFighter).getAttack()>computerDamage)
 											{
-												System.out.println("Computer Hp drops "+(fighterinformation.fightInformation.get(userChooseFighter).getAttack()-computerDamage) + " point");
-												computerHp=computerHp-fighterinformation.fightInformation.get(userChooseFighter).getAttack()+computerDamage;
+												System.out.println("Computer Hp drops "+(fighterInformation.fightInformation.get(userChooseFighter).getAttack()-computerDamage) + " point");
+												computerHp=computerHp-fighterInformation.fightInformation.get(userChooseFighter).getAttack()+computerDamage;
 												System.out.println("Computer HP is "+computerHp+".");
 												
 											}
@@ -120,9 +124,9 @@ public class fightinggameprocess
 							{
 								if(computerActions==1)
 									{
-										System.out.println("You chose to defend and stopped "+fighterinformation.fightInformation.get(userChooseFighter).getDefence()+" points of damage.");
+										System.out.println("You chose to defend and stopped "+fighterInformation.fightInformation.get(userChooseFighter).getDefence()+" points of damage.");
 										System.out.println("Computer chose to fight and dealt "+computerDamage+" points of damage.");
-										if(fighterinformation.fightInformation.get(userChooseFighter).getDefence()>computerDamage)
+										if(fighterInformation.fightInformation.get(userChooseFighter).getDefence()>computerDamage)
 											{
 												computerHp=computerHp-reflectPoints;
 												System.out.println("Since your defence damage is higher or even with the computer's attack, you return "+reflectPoints+" points od damage to the computer.");
@@ -132,8 +136,8 @@ public class fightinggameprocess
 											}
 										else
 											{
-												playerHp=playerHp+fighterinformation.fightInformation.get(userChooseFighter).getDefence()-computerDamage;
-												System.out.println("Your HP drops "+(fighterinformation.fightInformation.get(userChooseFighter).getAttack()-computerDamage) + " points.");
+												playerHp=playerHp+fighterInformation.fightInformation.get(userChooseFighter).getDefence()-computerDamage;
+												System.out.println("Your HP drops "+(fighterInformation.fightInformation.get(userChooseFighter).getAttack()-computerDamage) + " points.");
 												System.out.println("Your HP is "+playerHp+".");
 											}
 									
